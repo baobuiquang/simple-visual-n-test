@@ -110,7 +110,6 @@ body {
 
 .sub-wrap {
     display: flex;
-    gap: var(--pd-2);
 }
 .sub-wrap .phone {
     height: var(--phone-btn-size);
@@ -125,6 +124,7 @@ body {
     border: var(--border);
     border-radius: var(--border-radius);
     padding: 16px 16px;
+    margin-left: var(--pd-2);
 }
 .sub-wrap .phone-icon {
     margin-top: 14px;

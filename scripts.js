@@ -22,9 +22,9 @@ var backgrounds = [
 
 var musics = [
     { link: "" },
-    // { link: "https://buiquangbao.github.io/music1.mp3" },
-    // { link: "https://buiquangbao.github.io/music2.mp3" },
-    // { link: "https://buiquangbao.github.io/music3.mp3" }
+    { link: "https://buiquangbao.github.io/music1.mp3" },
+    { link: "https://buiquangbao.github.io/music2.mp3" },
+    { link: "https://buiquangbao.github.io/music3.mp3" }
 ];
 
 var allDialogs = {
