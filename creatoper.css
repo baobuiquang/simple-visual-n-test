@@ -1,0 +1,435 @@
+/* creatoper.config.js */
+:root {
+    /* Text System */
+    --font-size-p: 16px; /*p*/
+    --font-size-h1: 28px; /*h1*/
+    --font-size-h2: 24px; /*h2*/
+    --font-size-h3: 20px; /*h3*/
+    --font-size-h4: 16px; /*h4*/
+    --font-size-h5: 12px; /*h5*/
+    --font-size-h6: 10px; /*h6*/
+    --font-size-mobile-p: 16px; /*p*/
+    --font-size-mobile-h1: 28px; /*h1*/
+    --font-size-mobile-h2: 22px; /*h2*/
+    --font-size-mobile-h3: 20px; /*h3*/
+    --font-size-mobile-h4: 18px; /*h4*/
+    --font-size-mobile-h5: 16px; /*h5*/
+    --font-size-mobile-h6: 14px; /*h6*/  
+    /* Scroll To Top */
+    --scrolltotop-size: 20px;
+    --scrolltotop-color: #808080;
+    --scrolltotop-hover-color: #000000;
+    --scrolltotop-bottom-distance: 10px;
+    --scrolltotop-right-margin: 10px;
+    --scrolltotop-z-index: 100;
+    --scrolltotop-border: none;
+    --scrolltotop-outline: none;
+    --scrolltotop-cursor: pointer;
+    --scrolltotop-padding: 20px;
+    --scrolltotop-background-color: transparent;
+    /* Custom Scroll Bar */
+    --scrollbar-width: 6px;
+    --scrollbar-track-color: transparent;
+    --scrollbar-thumb-color: #808080;
+    --scrollbar-thumb-hover-color: #1b1b1b;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-size-p);
+
+    color: var(--text-1);
+    background: var(--background);
+}
+img {
+    max-width: 100%;
+}
+
+/* ========== Dark Mode ========== */
+body {
+    transition: all ease 0.5s;
+    --background: #eeeeee;
+    --text-1: #202020;
+    --text-2: #555555;
+    --link: #000000;
+    --accent: #009292;
+    --code-color: #c74956;
+    --svg-f: invert(0.0);
+    /* --------------------------- */
+    --border: 1px solid #d1d1d1;
+    --border-2: 2px solid #d1d1d1;
+}
+body.darkmode {
+    --background: #151515;
+    --text-1: #dfdfdf;
+    --text-2: #919191;
+    --link: #eeeeee;
+    --accent: #00d1d1;
+    --code-color: #f0808b;
+    --svg-f: invert(1.0);
+    /* --------------------------- */
+    --border: 1px solid #272727;
+    --border-2: 2px solid #272727;
+}
+.darkmode-button {
+    --drkbtn-w: 50px;
+    --drkbtn-h: 26px;
+    z-index: 1;
+    position: relative;
+    width: var(--drkbtn-w);
+    height: var(--drkbtn-h);
+    cursor: pointer;
+} @media screen and (max-width: 768px) {
+    .darkmode-button {
+        --drkbtn-w: 72px;
+        --drkbtn-h: 36px;
+    }
+}
+.darkmode-button input[type="checkbox"] {
+    position: relative;
+    opacity: 0;
+    left: 12px;
+}
+.darkmode-button span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    background-color: #000000;
+    border-radius: var(--drkbtn-h);
+    transition: 0.2s ease background-color, 0.2s ease opacity;
+}
+.darkmode-button span:before,
+.darkmode-button span:after {
+    content: '';
+    position: absolute;
+    top: calc(var(--drkbtn-h)*0.15);
+    width: calc(var(--drkbtn-h)*0.7);
+    height: calc(var(--drkbtn-h)*0.7);
+    border-radius: 50%;
+    transition: 0.5s ease transform, 0.2s ease background-color;
+}
+.darkmode-button span:after {
+    background-color: #ffffff;
+    transform: translate(calc(var(--drkbtn-h)*0.15) ,0px);
+    z-index: 0;
+}
+.darkmode-button input[type="checkbox"]:checked 
++ span:after {
+    background-color: #000000;
+    transform: translate(calc(var(--drkbtn-w) - var(--drkbtn-h)*0.85),0px);
+}
+.darkmode-button span:before {
+    background-color: #000000;
+    transform: translate(calc(var(--drkbtn-h)*-0.5), calc(var(--drkbtn-h)*-2));
+    z-index: 1;
+}
+.darkmode-button input[type="checkbox"]:checked 
++ span:before {
+    background-color: #ffffff;
+    transform: translate(calc(var(--drkbtn-w) - var(--drkbtn-h)*1.15), calc(-0.25*var(--drkbtn-h)));
+}
+.darkmode-button input[type="checkbox"]:checked 
++ span {
+    background-color: #ffffff;
+}
+.darkmode-button input[type="checkbox"]:active 
++ span {
+    opacity: 0.5;
+}
+.darkmode-button label {
+    color: transparent;
+    font-size: 1px;
+}
+
+
+/* ========== Main Wrap ========== */
+.main {
+    width: 100%;
+    margin: 0 auto;
+} @media screen and (min-width: 768px) {
+    .main {
+        width: 900px;
+    }
+}
+
+
+/* ========== RWD ========== */
+row, .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+} @media screen and (min-width: 768px) {
+    row, .row {
+        flex-wrap: nowrap;
+    }
+}
+col, col-1, col-2, col-3, col-4, col-5, col-6, col-7, col-8, col-9, col-10, col-11, col-12,
+[class^="col"] {
+    width: 100%;
+} @media screen and (min-width: 768px) {
+    col, .col {width: 100%}
+    col-1, .col-1 {width: 8.33%;} 
+    col-2, .col-2 {width: 16.66%;} 
+    col-3, .col-3 {width: 25%;} 
+    col-4, .col-4 {width: 33.33%;} 
+    col-5, .col-5 {width: 41.66%;} 
+    col-6, .col-6 {width: 50%;} 
+    col-7, .col-7 {width: 58.33%;} 
+    col-8, .col-8 {width: 66.66%;} 
+    col-9, .col-9 {width: 75%;} 
+    col-10, .col-10 {width: 83.33%;} 
+    col-11, .col-11 {width: 91.66%;} 
+    col-12, .col-12 {width: 100%;}
+}
+
+row, .row {
+    background: antiquewhite;
+    padding: 10px 0;
+}
+col, col-1, col-2, col-3, col-4, col-5, col-6, col-7, col-8, col-9, col-10, col-11, col-12,
+[class^="col"] {
+    background: rgb(204, 255, 202);
+    padding: 5px 15px;
+}
+
+
+
+/* ========== Navigation ========== */
+nav {
+    z-index: 2;
+    position: sticky;
+    top: 0;
+    background: antiquewhite;
+    display: flex;
+    align-items: center;
+} 
+nav .nav-title {
+    margin-right: auto;
+} 
+nav .nav-button {
+    position: relative;
+    z-index: 11;
+    display: block;
+} @media screen and (min-width: 768px) {
+    nav .nav-button {display: none;}    
+}
+nav .nav-links{
+    top: -40px;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0.0;
+    transition: all ease 0.3s;
+} @media screen and (min-width: 768px) {
+    nav .nav-links{
+        position: relative;
+        top: 0;
+        left: 0;
+        width: initial;
+        height: initial;
+        visibility: visible;
+        opacity: 1.0;
+    }
+}
+nav .nav-display {
+    visibility: visible;
+    opacity: 1.0;
+    top: 0;
+}
+nav .nav-bg {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    background: pink;
+}
+nav .nav-close {
+    background: green;
+}
+@media screen and (min-width: 768px) {
+    nav .nav-bg,
+    nav .nav-close {
+        display: none;
+    }
+}
+nav .nav-content {
+    display: flex;
+    flex-direction: column;
+    /* gap: 8px; */
+    background: cadetblue;
+} @media screen and (min-width: 768px) {
+    nav .nav-content {
+        flex-direction: row;
+    }
+}
+nav .nav-content a {
+    background: khaki;
+    padding: 5px 12px;
+    transition: all ease 0.3s;
+} nav .nav-content a:hover {
+    background: rgb(143, 240, 140);
+}
+nav .nav-sub-wrap {
+    background: aquamarine;
+    display: flex;
+}
+nav .nav-sub {
+    z-index: 1;
+    position: relative;
+}
+nav .nav-sub-links {
+    position: absolute;
+    top: -100%;
+    padding-top: 36px;
+    background: yellow;
+    visibility: hidden;
+    opacity: 0.0;
+    display: flex;
+    gap: 4px;
+    flex-direction: column;
+    transition: all ease 0.3s;
+}
+.nav-sub:hover + .nav-sub-links,
+.nav-sub-links:hover {
+    visibility: visible;
+    opacity: 1.0;
+    top: 0;
+}
+
+
+
+/* ========== Modal Box ========== */
+.modal {
+    z-index: 10;
+    position: fixed;
+    top: 20px;
+    left: 50px;
+    width: 600px;
+    height: 400px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+.modal-display {
+    /*   display: block; */
+    visibility: visible;
+    opacity: 1;
+    top: 40px;
+}
+.modal > .modal-bg {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    background: pink;
+}
+.modal > .modal-content {
+    background: blue;
+}
+.modal > .modal-close {
+    background: green;
+}
+  
+
+
+/* ========== Text System ========== */
+p {
+    font-size: var(--font-size-p);
+} h1 {
+    font-size: var(--font-size-h1);
+} h2 {
+    font-size: var(--font-size-h2);
+} h3 {
+    font-size: var(--font-size-h3);
+} h4 {
+    font-size: var(--font-size-h4);
+} h5 {
+    font-size: var(--font-size-h5);
+} h6 {
+    font-size: var(--font-size-h6);
+}
+@media only screen and (max-width: 768px) {
+    p {
+        font-size: var(--font-size-mobile-p);
+    } h1 {
+        font-size: var(--font-size-mobile-h1);
+    } h2 {
+        font-size: var(--font-size-mobile-h2);
+    } h3 {
+        font-size: var(--font-size-mobile-h3);
+    } h4 {
+        font-size: var(--font-size-mobile-h4);
+    } h5 {
+        font-size: var(--font-size-mobile-h5);
+    } h6 {
+        font-size: var(--font-size-mobile-h6);
+    }
+}
+
+/* ========== Scroll to top ========== */
+#scrolltotop {
+    font-size: var(--scrolltotop-size);
+    visibility: hidden;
+    opacity: 0.0;
+    position: fixed;
+    bottom: var(--scrolltotop-bottom-distance);
+    right: var(--scrolltotop-right-margin);
+    z-index: var(--scrolltotop-z-index);
+    border: var(--scrolltotop-border);
+    outline: var(--scrolltotop-outline);
+    color: var(--scrolltotop-color);
+    cursor: var(--scrolltotop-cursor);
+    padding: var(--scrolltotop-padding);
+    background-color: var(--scrolltotop-background-color);
+    transition: all ease 0.3s;
+} #scrolltotop:hover {
+    color: var(--scrolltotop-hover-color);
+}
+
+/* ========== Custom Scroll Bar ========== */
+::-webkit-scrollbar { width: var(--scrollbar-width); }
+::-webkit-scrollbar-track { background: var(--scrollbar-track-color); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb-color); }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover-color); }
+
+/* ========== Just Display On Desktop/Mobile ========== */
+
+.just-display-on-desktop {
+    display: block;
+} @media only screen and (max-width: 768px) {
+    .just-display-on-desktop {
+        display: none;
+    }
+}
+.just-display-on-mobile {
+    display: block;
+} @media only screen and (min-width: 768px) {
+    .just-display-on-mobile {
+        display: none;
+    }
+}
+
+/* ========== Anti-copy ========== */
+.anti-copy {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
