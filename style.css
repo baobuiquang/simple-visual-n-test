@@ -1,13 +1,18 @@
 * {
     --pd-1: 20px;
     --pd-2: 10px;
-    --phone-btn-size: 90px;
+    --phone-btn-size: 80px;
     --dialog-h: 200px;
     --border: 3px solid #eeeeee;
     --border-radius: 6px;
-    --char-img-size: calc(38vh + 5vw);
     --bg-color: #141414;
-    --mobile-browser-fix: 70px;
+    --mobile-browser-fix: 80px;
+    --section-top-h: calc(100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+    --char-img-size: calc(-50px + var(--section-top-h) - var(--dialog-h)/2 - var(--mobile-browser-fix));
+} @media screen and (min-width: 768px) {
+    * {
+        --char-img-size: calc(-50px + var(--section-top-h) - var(--dialog-h)/2);
+    }
 }
 
 body {
@@ -30,10 +35,10 @@ body {
 .section-top {
     position: relative;
     width: 100%;
-    height: calc( -1*var(--mobile-browser-fix) + 100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+    height: calc( -1*var(--mobile-browser-fix) + var(--section-top-h));
 } @media screen and (min-width: 768px) {
     .section-top  {
-        height: calc(100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+        height: var(--section-top-h);
     }
 }
 .character-img {
@@ -41,14 +46,17 @@ body {
     bottom: calc(var(--dialog-h)/2);
     left: calc(50% - var(--char-img-size)/2);
     max-width: var(--char-img-size);
+    user-select: none;
 }
 #background-img {
     height: 100%;
     width: calc(100% - 2*var(--pd-2));
     object-fit: cover;
-    border: var(--border);
+    /* border: var(--border); */
     border-radius: var(--border-radius);
     margin: var(--pd-2);
+    user-select: none;
+    transition: all ease 0.3s;
 }
 
 
@@ -77,6 +85,7 @@ body {
     background: #ffffff;
     color: #000000;
     letter-spacing: 0.5px;
+    user-select: none;
 }
 .dialog-wrap #dialog-text {
     margin: 32px 20px 0 20px;
@@ -85,6 +94,7 @@ body {
     user-select: none;
 }
 .dialog-wrap #choice-wrap {
+    z-index: 1;
     cursor: default;
     background: #000000c2;
     position: fixed;
@@ -92,10 +102,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: var(--pd-1);
+    transition: all ease 1.5s;
 }
 .dialog-wrap #choice-wrap [id^="choice-"] {
     cursor: pointer;
@@ -107,14 +120,40 @@ body {
     outline: none;
     border: var(--border);
     border-radius: var(--border-radius);
-    display: none;
+    opacity: 0;
     user-select: none;
-} @media screen and (min-width: 768px) {
+    transition: all ease 0.3s;
+} .dialog-wrap #choice-wrap [id^="choice-"]:hover {
+    background: #ffffff;
+    color: #000000;
+} .dialog-wrap #choice-wrap [id^="choice-"]:active {
+    color: #ffe600;
+}
+@media screen and (min-width: 768px) {
     .dialog-wrap #choice-wrap [id^="choice-"] {
         max-width: 768px;
         position: relative;
         left: calc(50% - 768px/2);
     }
+}
+.dialog-wrap #triangle-icon {
+    z-index: 0;
+    transform: rotate(180deg);
+    height: 12px;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    user-select: none;
+    animation-name: triangle-anim;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+@keyframes triangle-anim {
+    0%   {bottom: 16px;}
+    80%  {bottom: 16px;}
+    90%  {bottom: 22px;}
+    100% {bottom: 16px;}
 }
 
 .sub-wrap {
@@ -134,13 +173,16 @@ body {
     border-radius: var(--border-radius);
     padding: 16px 16px;
     margin-left: var(--pd-2);
+    user-select: none;
 }
 .sub-wrap .phone-icon {
-    margin-top: 14px;
-    margin-left: calc(var(--phone-btn-size)/2 - 21px);
+    height: 32px;
+    margin-top: 10px;
+    margin-left: calc(var(--phone-btn-size)/2 - 19px);
     user-select: none;
 }
 .sub-wrap .phone-text {
     font-size: 14px;
     text-align: center;
+    user-select: none;
 }

@@ -22,9 +22,9 @@ var backgrounds = [
 
 var musics = [
     { link: "" },
-    { link: "https://buiquangbao.github.io/music1.mp3" },
-    { link: "https://buiquangbao.github.io/music2.mp3" },
-    { link: "https://buiquangbao.github.io/music3.mp3" }
+    // { link: "https://buiquangbao.github.io/music1.mp3" },
+    // { link: "https://buiquangbao.github.io/music2.mp3" },
+    // { link: "https://buiquangbao.github.io/music3.mp3" }
 ];
 
 var allDialogs = {
@@ -143,19 +143,20 @@ function userClick() {
     //     Choices
     else {
         for (let i = 0; i < dialogsLength; i++) {
-            document.getElementById("choice-wrap").style.display = "flex";
+            document.getElementById("choice-wrap").style.visibility = "visible";
+            document.getElementById("choice-wrap").style.opacity = "1";
             document.getElementById("choice-" + i.toString()).innerHTML =
                 currentEvent[i].choice;
-            document.getElementById("choice-" + i.toString()).style.display = "block";
+            document.getElementById("choice-" + i.toString()).style.opacity = "1";
         }
     }
 }
 
 function selectChoice(choice) {
     for (let i = 0; i < dialogsLength; i++) {
-        document.getElementById("choice-wrap").style.display = "none";
-        document.getElementById("choice-" + i.toString()).innerHTML = "";
-        document.getElementById("choice-" + i.toString()).style.display = "none";
+        document.getElementById("choice-wrap").style.visibility = "hidden";
+        document.getElementById("choice-wrap").style.opacity = "0";
+        document.getElementById("choice-" + i.toString()).style.opacity = "0";
     }
     nextEvent(choice);
 }
