@@ -14,40 +14,43 @@
 
 <body style="background: var(--bg-color);">
 
-    <div class="main">
-        <div class="game-wrap">
-            <div class="section-top">
-                <img id="background-img" src="./assets/bg1.png">
-                <img class="character-img" src="./assets/char1.png">
-            </div>
-            <div class="section-bot">
-                <div class="dialog-wrap" onclick="userClick()">
-                    <div id="character-name">
-                        Character Name
-                    </div>
-                    <div id="dialog-text">
-                        This is the dialog of the character! Interdum et malesuada fames ac ante ipsum.
-                    </div>
-                    <div id="choice-wrap">
-                        <button id="choice-0" onclick="selectChoice(0)"></button>
-                        <button id="choice-1" onclick="selectChoice(1)"></button>
-                        <button id="choice-2" onclick="selectChoice(2)"></button>
-                    </div>
+    <div class="main-wrap">
+        <div class="main">
+            <div class="game-wrap">
+                <div class="section-top">
+                    <img id="background-img" src="./assets/bg1.png">
+                    <img class="character-img" src="./assets/char1.png">
                 </div>
-                <div class="sub-wrap">
-                    <div class="phone">
-                        <img class="phone-icon" src="./assets/feathericons/smartphone.svg">
-                        <div class="phone-text">
-                            Phone
+                <div class="section-bot">
+                    <div class="dialog-wrap" onclick="userClick()">
+                        <div id="character-name">
+                            Character Name
+                        </div>
+                        <div id="dialog-text">
+                            This is the dialog of the character! Interdum et malesuada fames ac ante ipsum.
+                        </div>
+                        <div id="choice-wrap">
+                            <button id="choice-0" onclick="selectChoice(0)"></button>
+                            <button id="choice-1" onclick="selectChoice(1)"></button>
+                            <button id="choice-2" onclick="selectChoice(2)"></button>
                         </div>
                     </div>
-                    <div class="note">
-                        This is a note!
+                    <div class="sub-wrap">
+                        <div class="phone">
+                            <img class="phone-icon" src="./assets/feathericons/smartphone.svg">
+                            <div class="phone-text">
+                                Phone
+                            </div>
+                        </div>
+                        <div class="note">
+                            This is a note!
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <script src="./creatoper.js" defer></script>
