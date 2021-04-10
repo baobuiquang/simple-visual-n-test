@@ -16,9 +16,13 @@ body {
 
 .game-wrap {
     position: relative;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 70px);
     width: 100%;
     overflow: hidden;
+}  @media screen and (min-width: 768px) {
+    .game-wrap {
+        height: calc(100vh);
+    }
 }
 
 
