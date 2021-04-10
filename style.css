@@ -164,14 +164,14 @@ body {
     right: 16px;
     user-select: none;
     animation-name: triangle-anim;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
 @keyframes triangle-anim {
     0%   {bottom: 16px;}
-    80%  {bottom: 16px;}
-    90%  {bottom: 22px;}
+    60%  {bottom: 16px;}
+    80%  {bottom: 22px;}
     100% {bottom: 16px;}
 }
 
