@@ -5,8 +5,9 @@
     --dialog-h: 200px;
     --border: 3px solid #eeeeee;
     --border-radius: 6px;
-    --char-img-size: calc(45vh + 2vw);
+    --char-img-size: calc(38vh + 5vw);
     --bg-color: #141414;
+    --mobile-browser-fix: 70px;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 
 .game-wrap {
     position: relative;
-    height: calc(100vh - 70px);
+    height: calc(100vh - var(--mobile-browser-fix));
     width: 100%;
     overflow: hidden;
 }  @media screen and (min-width: 768px) {
@@ -29,7 +30,11 @@ body {
 .section-top {
     position: relative;
     width: 100%;
-    height: calc(100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+    height: calc( -1*var(--mobile-browser-fix) + 100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+} @media screen and (min-width: 768px) {
+    .section-top  {
+        height: calc(100vh - var(--pd-1) - var(--pd-2) - var(--dialog-h)/2 - var(--phone-btn-size));
+    }
 }
 .character-img {
     position: absolute;
