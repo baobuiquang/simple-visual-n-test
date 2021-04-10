@@ -1,9 +1,10 @@
 * {
+    font-family: "Chakra Petch", "Roboto" , monospace;
     --pd-1: 20px;
     --pd-2: 10px;
     --phone-btn-size: 80px;
-    --dialog-h: 200px;
-    --border: 3px solid #eeeeee;
+    --dialog-h: 160px;
+    --border: 2px solid #eeeeee;
     --border-radius: 6px;
     --bg-color: #141414;
     --mobile-browser-fix: 80px;
@@ -18,6 +19,7 @@
 body {
     color: #ffffff;
     font-size: 18px;
+    background: var(--bg-color);
 }
 
 .game-wrap {
@@ -41,12 +43,25 @@ body {
         height: var(--section-top-h);
     }
 }
-.character-img {
+#character-img {
     position: absolute;
     bottom: calc(var(--dialog-h)/2);
     left: calc(50% - var(--char-img-size)/2);
     max-width: var(--char-img-size);
     user-select: none;
+}
+#event-img {
+    position: absolute;
+    bottom: calc(var(--dialog-h)/2);
+    left: 0;
+    width: 100%;
+    height: calc(var(--section-top-h) - var(--dialog-h)/2 - 50px);
+    object-fit: contain;
+    user-select: none;
+} @media screen and (max-width: 768px) {
+    #event-img {
+        height: calc(var(--section-top-h) - var(--dialog-h)/2 - 50px - var(--mobile-browser-fix));
+    }
 }
 #background-img {
     height: 100%;
@@ -75,8 +90,12 @@ body {
     margin-bottom: var(--pd-2);
     border: var(--border);
     border-radius: var(--border-radius);
+
+    background-image: linear-gradient(180deg, #1f1f1f 37.50%, #000000 37.50%, #000000 50%, #1f1f1f 50%, #1f1f1f 87.50%, #000000 87.50%, #000000 100%);
+    background-size: 8.00px 8.00px;
 }
 .dialog-wrap #character-name {
+    font-weight: 500;
     position: absolute;
     top: -16px;
     left: 16px;
@@ -108,7 +127,7 @@ body {
     flex-direction: column;
     justify-content: center;
     padding: var(--pd-1);
-    transition: all ease 1.5s;
+    transition: all ease 1s;
 }
 .dialog-wrap #choice-wrap [id^="choice-"] {
     cursor: pointer;
@@ -164,8 +183,11 @@ body {
     width: var(--phone-btn-size);
     border: var(--border);
     border-radius: var(--border-radius);
+    
+    background-image: linear-gradient(180deg, #1f1f1f 37.50%, #000000 37.50%, #000000 50%, #1f1f1f 50%, #1f1f1f 87.50%, #000000 87.50%, #000000 100%);
+    background-size: 8.00px 8.00px;
 }
-.sub-wrap .note {
+.sub-wrap #note {
     font-size: 14px;
     height: var(--phone-btn-size);
     flex-grow: 1;
@@ -173,16 +195,25 @@ body {
     border-radius: var(--border-radius);
     padding: 16px 16px;
     margin-left: var(--pd-2);
+    overflow-y: scroll;
+    overflow-x: hidden;
     user-select: none;
+    
+    background-image: linear-gradient(180deg, #1f1f1f 37.50%, #000000 37.50%, #000000 50%, #1f1f1f 50%, #1f1f1f 87.50%, #000000 87.50%, #000000 100%);
+    background-size: 8.00px 8.00px;
 }
 .sub-wrap .phone-icon {
     height: 32px;
+    width: 100%;
     margin-top: 10px;
-    margin-left: calc(var(--phone-btn-size)/2 - 19px);
     user-select: none;
 }
 .sub-wrap .phone-text {
     font-size: 14px;
     text-align: center;
     user-select: none;
+}
+.sub-wrap .phone-text-fix {
+    height: 10px;
+    width: var(--phone-btn-size);
 }
