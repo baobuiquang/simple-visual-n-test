@@ -28,10 +28,10 @@
     --scrolltotop-padding: 20px;
     --scrolltotop-background-color: transparent;
     /* Custom Scroll Bar */
-    --scrollbar-width: 6px;
+    --scrollbar-width: 2px;
     --scrollbar-track-color: transparent;
-    --scrollbar-thumb-color: #808080;
-    --scrollbar-thumb-hover-color: #1b1b1b;
+    --scrollbar-thumb-color: #ffffff;
+    --scrollbar-thumb-hover-color: #fffb00;
 }
 
 * {
@@ -159,7 +159,7 @@ body.darkmode {
     margin: 0 auto;
 } @media screen and (min-width: 768px) {
     .main {
-        width: 900px;
+        width: 768px; /* <--- */
     }
 }
 

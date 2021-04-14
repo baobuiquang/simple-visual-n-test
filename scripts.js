@@ -46,11 +46,11 @@ var musics = [
 var allDialogs = {
     eventName1: [
         { next: "eventName2" },
-        { m: 1, t: 1, b: 1, c: 1, d: "This is sentence 0.", n: "This is a note 1!" },
+        { m: 1, t: 1, b: 1, c: 1, d: "This is sentence 0.", n: "This is a <a href=\"#\">note 1 g y a l</a>!" },
         { d: "This is sentence 1." },
         { d: "This is sentence 2.", i: 1 },
         { b: 3, c: 4, d: "This is sentence 3." },
-        { d: "This is sentence 4.", n: "This is a note 2!" },
+        { d: "This is sentence 4.", n: "Charat sent you a message: This is a note 2!" },
         { d: "This is sentence 5." }
     ],
     eventName2: [
@@ -141,7 +141,8 @@ function userClick() {
                 backgrounds[currentEvent[i].b].link;
         }
         if (currentEvent[i].n != undefined) {
-            document.getElementById("note").innerHTML = currentEvent[i].n;
+            document.getElementById("note").innerHTML =
+                "&rsaquo; " + currentEvent[i].n + "<br>" + document.getElementById("note").innerHTML;
         }
         if (currentEvent[i].m != undefined) {
             try {
@@ -188,7 +189,8 @@ function selectChoice(choice) {
         document.getElementById("choice-wrap").style.opacity = "0";
         document.getElementById("choice-" + i.toString()).style.opacity = "0";
     }
-    document.getElementById("note").innerHTML = "Your choice: " + currentEvent[choice].choice;
+    document.getElementById("note").innerHTML =
+        "&raquo; Your choice: " + currentEvent[choice].choice + "<br>" + document.getElementById("note").innerHTML;
     nextEvent(choice);
 }
 

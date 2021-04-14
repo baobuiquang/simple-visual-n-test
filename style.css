@@ -2,7 +2,7 @@
     font-family: "Chakra Petch", "Roboto" , monospace;
     --pd-1: 20px;
     --pd-2: 10px;
-    --phone-btn-size: 80px;
+    --phone-btn-size: 90px;
     --dialog-h: 160px;
     --border: 2px solid #eeeeee;
     --border-radius: 6px;
@@ -20,6 +20,14 @@ body {
     color: #ffffff;
     font-size: 18px;
     background: var(--bg-color);
+}
+
+a {
+    color: #ffe600;
+    transition: all ease 0.3s;
+    text-decoration: none;
+} a:hover {
+    text-decoration: underline;
 }
 
 .game-wrap {
@@ -150,9 +158,9 @@ body {
 }
 @media screen and (min-width: 768px) {
     .dialog-wrap #choice-wrap [id^="choice-"] {
-        max-width: 768px;
+        max-width: 700px;
         position: relative;
-        left: calc(50% - 768px/2);
+        left: calc(50% - 700px/2);
     }
 }
 .dialog-wrap #triangle-icon {
@@ -175,8 +183,15 @@ body {
     100% {bottom: 16px;}
 }
 
+
+
+
 .sub-wrap {
+    opacity: 0.5;
     display: flex;
+    transition: all ease 0.5s;
+} .sub-wrap:hover {
+    opacity: 1;
 }
 .sub-wrap .phone {
     height: var(--phone-btn-size);
@@ -188,16 +203,18 @@ body {
     background-size: 8.00px 8.00px;
 }
 .sub-wrap #note {
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.5;
     height: var(--phone-btn-size);
     flex-grow: 1;
     border: var(--border);
     border-radius: var(--border-radius);
-    padding: 16px 16px;
+    padding: 8px 16px;
     margin-left: var(--pd-2);
     overflow-y: scroll;
     overflow-x: hidden;
-    user-select: none;
+    /* user-select: none; */
     
     background-image: linear-gradient(180deg, #1f1f1f 37.50%, #000000 37.50%, #000000 50%, #1f1f1f 50%, #1f1f1f 87.50%, #000000 87.50%, #000000 100%);
     background-size: 8.00px 8.00px;
@@ -205,7 +222,7 @@ body {
 .sub-wrap .phone-icon {
     height: 32px;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 16px;
     user-select: none;
 }
 .sub-wrap .phone-text {
