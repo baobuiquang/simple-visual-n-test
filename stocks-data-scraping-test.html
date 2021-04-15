@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stocks Data Scraping</title>
+</head>
+
+<body>
+
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+
+            --w: 1840px;
+            transition: all ease 0.3s;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #616161;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: #bebebe;
+        }
+
+        #sheet-wrap {
+            background: #121212;
+            width: var(--w);
+            position: relative;
+            top: -30px;
+        }
+
+        iframe {
+            border: none;
+            height: calc(100vh + 60px);
+            width: 100%;
+        }
+
+        .top-bar {
+            z-index: 1000;
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: calc(var(--w) - 16px);
+            background: #000000;
+            height: 44px;
+        }
+
+        .top-bar span {
+            position: absolute;
+            padding-top: 15px;
+        }
+    </style>
+
+    <div class="top-bar">
+        <span style="padding-left: 28px;">Last Trade</span>
+        <span style="padding-left: 128px;">-</span>
+        <span style="padding-left: 166px;">Status</span>
+        <span style="padding-left: 211px;">Ticker</span>
+        <span style="padding-left: 284px;">Company</span>
+        <span style="padding-left: 457px;">Open Price</span>
+        <span style="padding-left: 538px;">Latest Price</span>
+        <span style="padding-left: 644px;">Quick Chart</span>
+        <span style="padding-left: 754px;">Change</span>
+        <span style="padding-left: 830px;">% Change</span>
+        <span style="padding-left: 920px;">Volume</span>
+        <span style="padding-left: 990px;">Avg. Volume</span>
+        <span style="padding-left: 1072px;">Market Cap</span>
+        <span style="padding-left: 1182px;">PE</span>
+        <span style="padding-left: 1242px;">EPS</span>
+        <span style="padding-left: 1300px;">Low 52</span>
+        <span style="padding-left: 1370px;">High 52</span>
+        <span style="padding-left: 1457px;">Beta</span>
+        <span style="padding-left: 1518px;">Shares</span>
+        <span style="padding-left: 1620px;">Price performance (100 days)</span>
+    </div>
+
+    <div id="sheet-wrap">
+        <iframe
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR6TWnlanpy9cCzHQJBk9eCQgkfwT1ltcywE_rb7QaoG03NqUyP3pedHONJh5A3SjtV19rJ9ZCl1b0v/pubhtml?widget=true&amp;headers=false">
+        </iframe>
+    </div>
+
+
+
+
+</body>
+
+</html>

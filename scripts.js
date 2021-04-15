@@ -5,6 +5,10 @@
 // s: sound effect
 // t: blip tone
 // n: note
+// i: event-img
+// e: emotion
+
+// Rule: c + e
 
 var characters = [
     { name: "" },
@@ -15,11 +19,11 @@ var characters = [
 ];
 
 var charImgs = [
-    { link: "" },
-    { link: "./assets/char1.png" },
-    { link: "./assets/char2.png" },
-    { link: "./assets/char3.png" },
-    { link: "./assets/char4.png" }
+    { e1: "" },
+    { e1: "./assets/char1.png", e2: "./assets/char1.png", e3: "./assets/char1.png", e4: "./assets/char1.png" },
+    { e1: "./assets/char2.png", e2: "./assets/char2e.png", e3: "./assets/char2.png", e4: "./assets/char2.png" },
+    { e1: "./assets/char3.png", e2: "./assets/char3.png", e3: "./assets/char3e.png", e4: "./assets/char3.png" },
+    { e1: "./assets/char4.png", e2: "./assets/char4.png", e3: "./assets/char4.png", e4: "./assets/char4e.png" }
 ];
 
 var backgrounds = [
@@ -36,20 +40,27 @@ var eventImgs = [
     { link: "./assets/img2.png" },
 ];
 
+var blipSounds = [
+    { link: "" },
+    { link: "./musics/male_deep_1.ogg" },
+    { link: "./musics/male_deep_2.ogg" },
+    { link: "./musics/male_deep_3.ogg" },
+];
+
 var musics = [
     { link: "" },
-    { link: "https://buiquangbao.github.io/music1.mp3" },
-    { link: "https://buiquangbao.github.io/music2.mp3" },
-    { link: "https://buiquangbao.github.io/music3.mp3" }
+    { link: "./musics/music1.mp3" },
+    { link: "./musics/music2.mp3" },
+    { link: "./musics/music3.mp3" }
 ];
 
 var allDialogs = {
     eventName1: [
         { next: "eventName2" },
-        { m: 1, t: 1, b: 1, c: 1, d: "This is sentence 0.", n: "This is a <a href=\"#\">note 1 g y a l</a>!" },
+        { m: 1, t: 1, b: 1, c: 1, e: 1, d: "This is sentence 0.", n: "This is a <a href=\"#\">note 1 g y a l</a>!" },
         { d: "This is sentence 1." },
         { d: "This is sentence 2.", i: 1 },
-        { b: 3, c: 4, d: "This is sentence 3." },
+        { b: 3, c: 4, e: 4, d: "This is sentence 3." },
         { d: "This is sentence 4.", n: "Charat sent you a message: This is a note 2!" },
         { d: "This is sentence 5." }
     ],
@@ -59,14 +70,14 @@ var allDialogs = {
     ],
     eventName3: [
         { next: "eventName1" },
-        { m: 2, t: 2, b: 2, c: 2, d: "Route A: This is sentence 0." },
+        { m: 2, t: 2, b: 2, c: 2, e: 2, d: "Route A: This is sentence 0." },
         { d: "Route A: This is sentence 1.", i: 2 },
         { d: "Route A: This is sentence 2.", n: "This is a note 3!" },
         { d: "Route A: This is sentence 3." }
     ],
     eventName4: [
         { next: "eventName1" },
-        { m: 3, t: 3, b: 4, c: 3, d: "Route B: This is sentence 0." },
+        { m: 3, t: 3, b: 4, c: 3, e: 3, d: "Route B: This is sentence 0." },
         { d: "Route B: This is sentence 1.", n: "This is a note 4!" },
         { d: "Route B: This is sentence 2." }
     ]
@@ -90,12 +101,11 @@ function playTextBlipSound() {
             currentEvent[i].t != undefined
                 ? currentEvent[i].t
                 : currentTextBlip;
-        if (currentTextBlip === 1) {
-            sound = new Audio("https://buiquangbao.github.io/male_deep_1.ogg");
-        } else if (currentTextBlip === 2) {
-            sound = new Audio("https://buiquangbao.github.io/male_deep_2.ogg");
-        } else if (currentTextBlip === 3) {
-            sound = new Audio("https://buiquangbao.github.io/male_deep_3.ogg");
+        for (let j = 0; j < 100; j++) {
+            if (currentTextBlip === j) {
+                sound = new Audio(blipSounds[j].link);
+                break;
+            }
         }
         sound.play();
     }
@@ -133,8 +143,20 @@ function userClick() {
                 characters[currentEvent[i].c].name;
         }
         if (currentEvent[i].c != undefined) {
-            document.getElementById("character-img").src =
-                charImgs[currentEvent[i].c].link;
+            if (currentEvent[i].e != undefined) {
+                for (let j = 1; j < 100; j++) {
+                    if (currentEvent[i].e === j) {
+                        document.getElementById("character-img").src
+                            = charImgs[currentEvent[i].c]["e" + j.toString()];
+                        console.log(">>>> e" + j.toString() + " >> " + charImgs[currentEvent[i].c]["e" + j.toString()]);
+                        break;
+                    }
+                }
+            } else {
+                // Mặc định nếu không khai báo e
+                document.getElementById("character-img").src
+                    = charImgs[currentEvent[i].c]["e1"];
+            }
         }
         if (currentEvent[i].b != undefined) {
             document.getElementById("background-img").src =
@@ -209,5 +231,19 @@ function nextEvent(nextAtWhere) {
     currentEvent = allDialogs[currentEvent[nextAtWhere].next];
     dialogsLength = Object.keys(currentEvent).length;
 }
+
+
+var isPhoneOff = true;
+function togglePhone() {
+    if (isPhoneOff) {
+        document.getElementById("phone-off").style.visibility = "hidden";
+        document.getElementById("phone-off").style.opacity = 0.0;
+    } else {
+        document.getElementById("phone-off").style.visibility = "visible";
+        document.getElementById("phone-off").style.opacity = 1.0;
+    }
+    isPhoneOff = !isPhoneOff;
+}
+
 
 console.log(">> Started");

@@ -105,7 +105,7 @@ a {
 .dialog-wrap #character-name {
     font-weight: 500;
     position: absolute;
-    top: -16px;
+    top: -18px;
     left: 16px;
     padding: 6px 14px;
     border-radius: var(--border-radius);
@@ -115,7 +115,7 @@ a {
     user-select: none;
 }
 .dialog-wrap #dialog-text {
-    margin: 32px 20px 0 20px;
+    margin: 28px 20px 0 20px;
     line-height: 1.5;
     letter-spacing: 0.5px;
     user-select: none;
@@ -187,7 +187,7 @@ a {
 
 
 .sub-wrap {
-    opacity: 0.5;
+    opacity: 0.6;
     display: flex;
     transition: all ease 0.5s;
 } .sub-wrap:hover {
@@ -198,13 +198,18 @@ a {
     width: var(--phone-btn-size);
     border: var(--border);
     border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all ease 0.2s;
     
     background-image: linear-gradient(180deg, #1f1f1f 37.50%, #000000 37.50%, #000000 50%, #1f1f1f 50%, #1f1f1f 87.50%, #000000 87.50%, #000000 100%);
     background-size: 8.00px 8.00px;
+} .sub-wrap .phone:hover {
+    filter: invert(1.0);
 }
-.sub-wrap #note {
+.sub-wrap .note-css {
     color: #ffffff;
     font-size: 16px;
+    /* font-weight: 300; */
     line-height: 1.5;
     height: var(--phone-btn-size);
     flex-grow: 1;
@@ -222,7 +227,7 @@ a {
 .sub-wrap .phone-icon {
     height: 32px;
     width: 100%;
-    margin-top: 16px;
+    margin-top: 17px;
     user-select: none;
 }
 .sub-wrap .phone-text {
@@ -233,4 +238,13 @@ a {
 .sub-wrap .phone-text-fix {
     height: 10px;
     width: var(--phone-btn-size);
+}
+
+.sub-wrap #phone-off {
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    left: calc(2*var(--pd-2) + var(--phone-btn-size));
+    width: calc(100% - 5*var(--pd-2) - var(--phone-btn-size));
+    transition: all ease 0.3s;
 }
