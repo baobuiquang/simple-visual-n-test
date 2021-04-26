@@ -49,9 +49,9 @@ var blipSounds = [
 
 var musics = [
     { link: "" },
-    { link: "./musics/music1.mp3" },
-    { link: "./musics/music2.mp3" },
-    { link: "./musics/music3.mp3" }
+    // { link: "./musics/music1.mp3" },
+    // { link: "./musics/music2.mp3" },
+    // { link: "./musics/music3.mp3" }
 ];
 
 var allDialogs = {
